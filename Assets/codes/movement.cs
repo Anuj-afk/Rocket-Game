@@ -6,37 +6,25 @@ using UnityEngine.UIElements;
 public class movement : MonoBehaviour
 {
     [SerializeField] float Thrust;
-    [SerializeField] float Rotation; 
+    [SerializeField] float Rotation;
     Rigidbody rb;
-    AudioSource audioSource;    
+    AudioSource audioSource;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();  
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         processInput();
+        processThrust();    
     }
 
     void processInput()
     {
         float Rotationspeed = Rotation * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Vector3 Force = Vector3.up + new Vector3(0, Thrust, 0) * Time.deltaTime;
-            rb.AddRelativeForce(Force);
-            if (audioSource.isPlaying == false) 
-            {
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            audioSource.Pause();
-        }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             rb.freezeRotation = true;
@@ -44,12 +32,29 @@ public class movement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.freezeRotation = true;   
+            rb.freezeRotation = true;
             transform.Rotate(0, 0, -Rotationspeed);
         }
         else
         {
             rb.freezeRotation = false;
+        }
+
+    }
+    void processThrust()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Vector3 Force = Vector3.up + new Vector3(0, Thrust, 0) * Time.deltaTime;
+            rb.AddRelativeForce(Force);
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Pause();
         }
     }
 }
