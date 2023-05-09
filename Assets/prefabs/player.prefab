@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2713695715146412157}
   - component: {fileID: -2230797097327243730}
   - component: {fileID: -2981836577831614465}
-  - component: {fileID: 1521583963}
+  - component: {fileID: 3005126243998671843}
+  - component: {fileID: 1978057862}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdefbfc5324b90347ba8173a4ee96c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Thrust: 80
+  Thrust: 20
   Rotation: 100
 --- !u!54 &-2981836577831614465
 Rigidbody:
@@ -130,7 +131,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!82 &1521583963
+--- !u!82 &3005126243998671843
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,3 +227,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1978057862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713695715146412156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8146a4bcdeafdb42aebafb254f2a957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

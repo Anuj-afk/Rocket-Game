@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ColllisionHandler : MonoBehaviour
 {
+    int level = 0;
+
     private void OnCollisionEnter(Collision collision)
     {
         tag = collision.gameObject.tag;
@@ -13,11 +15,9 @@ public class ColllisionHandler : MonoBehaviour
             case "Freindly":
                 Debug.Log("This is freindly");
                 break;
-            case "Fuel":
-                Debug.Log("Fuel add");
-                break;
             case "Finish":
-                Debug.Log("Level Completed");
+                level += 1;
+                LevelLoader();
                 break;
             default:
                 LevelLoader();
@@ -27,6 +27,6 @@ public class ColllisionHandler : MonoBehaviour
     private void LevelLoader()
     {
         int Currentscene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(Currentscene);
+        SceneManager.LoadScene(Currentscene + level);
     }
 }
