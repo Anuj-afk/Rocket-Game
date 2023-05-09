@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ColllisionHandler : MonoBehaviour
 {
@@ -19,8 +20,13 @@ public class ColllisionHandler : MonoBehaviour
                 Debug.Log("Level Completed");
                 break;
             default:
-                Debug.Log("you have hit a obstacle");
+                LevelLoader();
                 break;
         }
+    }
+    private void LevelLoader()
+    {
+        int Currentscene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(Currentscene);
     }
 }
