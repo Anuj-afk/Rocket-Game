@@ -33,6 +33,10 @@ public class movement : MonoBehaviour
             rb.freezeRotation = true;
             transform.Rotate(0, 0, -Rotationspeed);
         }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ;
+        }
 
     }
     void processThrust()
