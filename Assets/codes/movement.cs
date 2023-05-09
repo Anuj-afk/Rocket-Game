@@ -14,8 +14,6 @@ public class movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         processInput();
@@ -34,10 +32,6 @@ public class movement : MonoBehaviour
         {
             rb.freezeRotation = true;
             transform.Rotate(0, 0, -Rotationspeed);
-        }
-        else
-        {
-            rb.freezeRotation = false;
         }
 
     }
