@@ -10,6 +10,7 @@ public class movement : MonoBehaviour
     [SerializeField] float Rotation;
     Rigidbody rb;
     AudioSource audioSource;
+    [SerializeField] AudioClip mainengine;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,7 +22,7 @@ public class movement : MonoBehaviour
         processThrust();    
     }
 
-    void processInput()
+    public void processInput()
     {
         float Rotationspeed = Rotation * Time.deltaTime;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -40,7 +41,7 @@ public class movement : MonoBehaviour
         }
 
     }
-    void processThrust()
+         void processThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -48,7 +49,7 @@ public class movement : MonoBehaviour
             rb.AddRelativeForce(Force);
             if (audioSource.isPlaying == false)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(mainengine);
             }
         }
         else

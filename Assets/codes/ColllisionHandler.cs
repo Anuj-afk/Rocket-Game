@@ -8,9 +8,13 @@ public class ColllisionHandler : MonoBehaviour
     int level = 0;
     movement Movement;
     [SerializeField] float delay;
+    AudioSource audioSource;
+    [SerializeField] AudioClip DieClip;
+    [SerializeField] AudioClip NextLevelClip;   
     private void Start()
     {
         Movement = GetComponent<movement>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,10 +27,14 @@ public class ColllisionHandler : MonoBehaviour
             case "Finish":
                 level = 1;
                 StartCrash();
+                audioSource.Pause();
+                audioSource.PlayOneShot(NextLevelClip);
                 break;
             default:
                 level = 0;
                 StartCrash();
+                audioSource.Pause();
+                audioSource.PlayOneShot(DieClip);
                 break;
         }
     }
