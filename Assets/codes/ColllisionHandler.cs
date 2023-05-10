@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ColllisionHandler : MonoBehaviour
 {
+    [SerializeField] ParticleSystem SuccessParticles;
+    [SerializeField] ParticleSystem CrashParticles;
+    [SerializeField] float delay;
+    [SerializeField] AudioClip DieClip;
+    [SerializeField] AudioClip NextLevelClip;
+    AudioSource audioSource;
+    bool isTransitioning = false;
     int level = 0;
     movement Movement;
-    [SerializeField] float delay;
-    AudioSource audioSource;
-    [SerializeField] AudioClip DieClip;
-    [SerializeField] AudioClip NextLevelClip;   
-    bool isTransitioning = false;   
     private void Start()
     {
         Movement = GetComponent<movement>();
@@ -32,6 +34,7 @@ public class ColllisionHandler : MonoBehaviour
                     StartCrash();
                     audioSource.Pause();
                     audioSource.PlayOneShot(NextLevelClip);
+                    SuccessParticles.Play();
                 }
                 break;
             default:
@@ -41,6 +44,7 @@ public class ColllisionHandler : MonoBehaviour
                     StartCrash();
                     audioSource.Pause();
                     audioSource.PlayOneShot(DieClip);
+                    CrashParticles.Play();
                 }
                 break;
         }
