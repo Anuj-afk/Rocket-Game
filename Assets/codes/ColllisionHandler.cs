@@ -11,6 +11,7 @@ public class ColllisionHandler : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip DieClip;
     [SerializeField] AudioClip NextLevelClip;   
+    bool isTransitioning = false;   
     private void Start()
     {
         Movement = GetComponent<movement>();
@@ -25,16 +26,22 @@ public class ColllisionHandler : MonoBehaviour
                 Debug.Log("This is freindly");
                 break;
             case "Finish":
-                level = 1;
-                StartCrash();
-                audioSource.Pause();
-                audioSource.PlayOneShot(NextLevelClip);
+                if (isTransitioning == false)
+                {
+                    level = 1;
+                    StartCrash();
+                    audioSource.Pause();
+                    audioSource.PlayOneShot(NextLevelClip);
+                }
                 break;
             default:
-                level = 0;
-                StartCrash();
-                audioSource.Pause();
-                audioSource.PlayOneShot(DieClip);
+                if (isTransitioning == false)
+                {
+                    level = 0;
+                    StartCrash();
+                    audioSource.Pause();
+                    audioSource.PlayOneShot(DieClip);
+                }
                 break;
         }
     }
@@ -52,6 +59,7 @@ public class ColllisionHandler : MonoBehaviour
     }
     private void StartCrash()
     {
+        isTransitioning = true;
         Invoke("LevelLoader", delay);
         Movement.enabled = false;
     }
