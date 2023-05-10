@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 public class ColllisionHandler : MonoBehaviour
 {
     int level = 0;
-
+    movement Movement;
+    [SerializeField] float delay;
+    private void Start()
+    {
+        Movement = GetComponent<movement>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         tag = collision.gameObject.tag;
@@ -17,11 +22,11 @@ public class ColllisionHandler : MonoBehaviour
                 break;
             case "Finish":
                 level = 1;
-                LevelLoader();
+                StartCrash();
                 break;
             default:
                 level = 0;
-                LevelLoader();
+                StartCrash();
                 break;
         }
     }
@@ -36,5 +41,10 @@ public class ColllisionHandler : MonoBehaviour
         {
             SceneManager.LoadScene(Currentscene + level);
         }
+    }
+    private void StartCrash()
+    {
+        Invoke("LevelLoader", delay);
+        Movement.enabled = false;
     }
 }
