@@ -19,7 +19,7 @@ public class movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
-    void Update()
+    void FixedUpdate()
     {
         processInput();
         processThrust();

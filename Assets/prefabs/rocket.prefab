@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdefbfc5324b90347ba8173a4ee96c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Thrust: 80
+  Thrust: 260
   Rotation: -100
   sidethrusterParticles: {fileID: 3367133012127619654}
   MainthrusterParticles: {fileID: 8387015448791174950}
