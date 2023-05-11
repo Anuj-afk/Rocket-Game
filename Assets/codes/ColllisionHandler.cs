@@ -12,6 +12,7 @@ public class ColllisionHandler : MonoBehaviour
     [SerializeField] AudioClip NextLevelClip;
     AudioSource audioSource;
     bool isTransitioning = false;
+    bool iscollision = true;
     int level = 0;
     movement Movement;
     private void Start()
@@ -19,7 +20,36 @@ public class ColllisionHandler : MonoBehaviour
         Movement = GetComponent<movement>();
         audioSource = GetComponent<AudioSource>();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            level = 1;
+            LevelLoader();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (iscollision == true)
+            {
+                iscollision = false;
+            }
+            else if (iscollision == false)
+            {
+                iscollision = true;
+            }
+            
+        }    
+    }
     private void OnCollisionEnter(Collision collision)
+    {
+        if (iscollision == true)
+        {
+                    collisions(collision);
+        }
+
+    }
+
+    private void collisions(Collision collision)
     {
         tag = collision.gameObject.tag;
         switch (tag)
@@ -49,6 +79,7 @@ public class ColllisionHandler : MonoBehaviour
                 break;
         }
     }
+
     private void LevelLoader()
     {
         int Currentscene = SceneManager.GetActiveScene().buildIndex;
