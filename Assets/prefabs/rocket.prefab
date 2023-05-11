@@ -44,7 +44,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 15
   m_Range: 20
   m_SpotAngle: 50
   m_InnerSpotAngle: 1
@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 4453321738773003105}
   - component: {fileID: 5075284339079155587}
   - component: {fileID: 7925832593378707447}
+  - component: {fileID: 1847903590}
   m_Layer: 0
   m_Name: rocket
   m_TagString: Untagged
@@ -740,6 +741,18 @@ MonoBehaviour:
   delay: 1
   DieClip: {fileID: 8300000, guid: 939a20ab7e5159c49b15a056e99c9ea5, type: 3}
   NextLevelClip: {fileID: 8300000, guid: 725378c3670829b4da0260eeeda6cf13, type: 3}
+--- !u!114 &1847903590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171678821209249281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961838ddfbeda8c459d43ce42dfd0557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2785273727789106212
 PrefabInstance:
   m_ObjectHideFlags: 0
